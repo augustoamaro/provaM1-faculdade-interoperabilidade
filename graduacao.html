@@ -8,8 +8,8 @@
 </head>
 <body>
   <h1>1º Semestre</h1>
-  <table border="1">
-    <thead>
+  <table class="table">
+    <thead class="thead-dark">
       <tr>
         <th>Disciplina</th>
         <th>Código da Disciplina</th>
@@ -17,16 +17,18 @@
         <th>Professor</th>
         <th>Sala</th>
         <th>Requisitos</th>
-        <th>Ementa</th>
-        <th>Avaliações</th>
         <th>Descrição</th>
       </tr>
     </thead>
     <tbody>
     </tbody>
   </table>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
   <template id="xml">
     <?xml version="1.0"?>
+<root>    
     <semestre>
       <disciplina name="Design de interfaces">
         <disciplinas>Design de interfaces I</disciplinas>
@@ -329,7 +331,7 @@
                 </disciplina>  
               </semestre>
             </template>
-  
+  </root>
   <script src="graduacao.js"></script>
 </body>
-</html>vvvvvvvvvvvvvvvv
+</html>

@@ -1,4 +1,4 @@
-// copiando os dados da tag `disciplina` para o objeto `disciplina`
+// copiando os dados da tag 'disciplina' para o objeto 'disciplina'
 var Disciplina = function (node) {
 	var that = this;
 	this.id = node.id;
@@ -21,27 +21,30 @@ var httpRequest = new XMLHttpRequest();
 httpRequest.open("GET", url, true)
 httpRequest.addEventListener("readystatechange", function () {
 	if (httpRequest.readyState == 4) {
-		var catalog = httpRequest.responseXML.getElementsByTagName("semestre")[0];
-		var disciplina = catalog.getElementsByTagName("disciplina");
-		[].forEach.call(disciplina, function (node, indice) {
-			var disciplina = new Disciplina(node);
-			var linha = document.createElement("tr");
-			for (var indice = 0; indice < 7; indice++) {
-				var celula = document.createElement("td");
-				linha.appendChild(celula);
-			}
+		var catalog = httpRequest.responseXML.getElementsByTagName("semestre");
+		// iterar pelos semestres
+		[].forEach.call(catalog, function (node, indice){
+			var disciplina = node.getElementsByTagName("disciplina");
+			[].forEach.call(disciplina, function (node, indice) {
+				var disciplina = new Disciplina(node);
+				var linha = document.createElement("tr");
+				for (var indice = 0; indice < 7; indice++) {
+					var celula = document.createElement("td");
+					linha.appendChild(celula);
+				}
 
-			linha.dataset.id = disciplina.id;
-			linha.children[0].textContent = disciplina.disciplinas;
-			linha.children[1].textContent = disciplina.codigo;
-			linha.children[2].textContent = disciplina.creditos;
-			linha.children[3].textContent = disciplina.professor;
-			linha.children[4].textContent = disciplina.sala;
-			linha.children[5].textContent = disciplina.requisito;
-			linha.children[6].textContent = disciplina.descricao;
+				linha.dataset.id = disciplina.id;
+				linha.children[0].textContent = disciplina.disciplinas;
+				linha.children[1].textContent = disciplina.codigo;
+				linha.children[2].textContent = disciplina.creditos;
+				linha.children[3].textContent = disciplina.professor;
+				linha.children[4].textContent = disciplina.sala;
+				linha.children[5].textContent = disciplina.requisito;
+				linha.children[6].textContent = disciplina.descricao;
 
-			tbody.appendChild(linha);
-		});
-	}
+				tbody.appendChild(linha);
+			})
+		}
+	)}
 });
 httpRequest.send();
